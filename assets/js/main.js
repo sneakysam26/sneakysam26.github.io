@@ -52,10 +52,15 @@ introTimeline.to(
 
 const motionGlide = new Glide(".motion-glide", {
   type: "carousel",
-  perView: 2,
+  perView: 3,
+  gap: 20,
   autoplay: 20000,
   animationDuration: 700,
   breakpoints: {
+    1099: {
+      perView: 2
+    },
+
     767: {
       perView: 1
     }
@@ -69,10 +74,15 @@ motionGlide.mount();
 
 const videoGlide = new Glide(".video-glide", {
   type: "carousel",
-  perView: 2,
+  perView: 3,
+  gap: 20,
   autoplay: 20000,
   animationDuration: 700,
   breakpoints: {
+    1099: {
+      perView: 2
+    },
+
     767: {
       perView: 1
     }
@@ -85,10 +95,15 @@ videoGlide.mount();
 
 const graphicGlide = new Glide(".graphic-glide", {
   type: "carousel",
-  perView: 2,
+  perView: 3,
+  gap: 20,
   autoplay: 20000,
   animationDuration: 700,
   breakpoints: {
+    1099: {
+      perView: 2
+    },
+
     767: {
       perView: 1
     }
@@ -97,10 +112,15 @@ const graphicGlide = new Glide(".graphic-glide", {
 
 graphicGlide.mount();
 
-// Graphic Design Fullscreen Viewer
+// Fullscreen Image Viewer
 
-const graphicImages =
-  Array.from(document.querySelectorAll(".graphic-glide .fullscreen-image"));
+const graphicImages = Array.from(
+  document.querySelectorAll(".graphic-glide .fullscreen-image")
+);
+
+const processImages = Array.from(
+  document.querySelectorAll(".process .fullscreen-image")
+);
 
 const fullscreenViewer =
   document.querySelector(".image-fullscreen-viewer");
@@ -117,34 +137,48 @@ const fullscreenNext =
 const fullscreenClose =
   document.querySelector(".fullscreen-close");
 
+
+let activeFullscreenImages = [];
 let fullscreenImageIndex = 0;
 
 
 function showFullscreenImage(index) {
 
   fullscreenImageIndex =
-    (index + graphicImages.length) % graphicImages.length;
+    (index + activeFullscreenImages.length) %
+    activeFullscreenImages.length;
 
-  const image = graphicImages[fullscreenImageIndex];
+  const image =
+    activeFullscreenImages[fullscreenImageIndex];
 
   fullscreenViewerImage.src = image.src;
   fullscreenViewerImage.alt = image.alt;
 }
 
 
-graphicImages.forEach((image, index) => {
+function setupFullscreenGallery(images) {
 
-  image.addEventListener("click", () => {
+  images.forEach((image, index) => {
 
-    showFullscreenImage(index);
+    image.addEventListener("click", () => {
 
-    if (fullscreenViewer.requestFullscreen) {
-      fullscreenViewer.requestFullscreen();
-    }
+      activeFullscreenImages = images;
+
+      showFullscreenImage(index);
+
+      if (fullscreenViewer.requestFullscreen) {
+        fullscreenViewer.requestFullscreen();
+      }
+
+    });
 
   });
 
-});
+}
+
+
+setupFullscreenGallery(graphicImages);
+setupFullscreenGallery(processImages);
 
 
 fullscreenPrevious.addEventListener("click", () => {

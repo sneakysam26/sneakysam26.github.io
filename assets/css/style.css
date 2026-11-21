@@ -400,7 +400,6 @@ h2 {
 .motion,
 .video,
 .graphics {
-  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -431,7 +430,7 @@ h2 {
 .glide__slide img,
 .glide__slide video {
   width: 100%;
-  height: 350px;
+  height: 600px;
   object-fit: contain;
   display: block;
   transition: transform 0.4s ease;
@@ -481,7 +480,7 @@ h2 {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
   padding: 30px 24px 24px;
   color: #ffffff;
   background: linear-gradient(
@@ -622,8 +621,6 @@ h2 {
 /* About Section */
 
 .about {
-  min-height: 80vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -773,7 +770,6 @@ h2 {
 /* Contact Section */
 
 .contact {
-  min-height: 80vh;
 
   display: flex;
   align-items: center;
@@ -927,6 +923,170 @@ h2 {
   transform: translateY(-3px);
 }
 
+/* My Process */
+
+/* My Process */
+
+.process {
+  padding: 5rem 2rem;
+}
+
+.process-inner {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+
+/* Process Main Heading - Matches About */
+
+.process h2 {
+  margin-bottom: 3rem;
+
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+
+  color: var(--text-light);
+
+  text-shadow: var(--text-shadow);
+}
+
+
+/* Process Introduction */
+
+.process-heading {
+  max-width: 720px;
+
+  margin-bottom: 5rem;
+}
+
+.process-heading p {
+  margin-bottom: 1.5rem;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  color: var(--text-light);
+
+  text-shadow: var(--text-shadow);
+}
+
+
+/* Process Steps */
+
+.process-step {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 2rem;
+
+  margin-bottom: 5rem;
+}
+
+
+/* Process Step Text */
+
+.process-text {
+  max-width: 720px;
+}
+
+.process-text h3 {
+  margin-bottom: 1.5rem;
+
+  font-size: 1.6rem;
+
+  color: #D8A6AF;
+
+  text-shadow: var(--text-shadow);
+}
+
+.process-text p {
+  margin-bottom: 1.5rem;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  color: var(--text-light);
+
+  text-shadow: var(--text-shadow);
+}
+
+
+/* Process Numbers */
+
+.process-number {
+  display: block;
+
+  margin-bottom: 0.75rem;
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08;
+
+  color: #D8A6AF;
+
+  text-shadow: var(--text-shadow);
+}
+
+.process-text h3 {
+  margin: 0 0 1.5rem;
+
+  font-size: 2rem;
+
+  color: #D8A6AF;
+
+  text-shadow: var(--text-shadow);
+}
+
+
+/* Process Images */
+
+.process-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.process-image {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.process-image img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(216, 166, 175, 0.12);
+}
+
+.process-image figcaption {
+  margin-top: 0.75rem;
+
+  font-size: 1rem;
+  line-height: 1.8;
+
+  color: var(--text-muted);
+
+  text-shadow: var(--text-shadow);
+}
+
+
+/* Final Process Step */
+
+.process-step-final {
+  margin-bottom: 0;
+}
+
+
+
 /* Tablet / Small Desktop */
 @media (min-width: 768px) {
 
@@ -1031,41 +1191,41 @@ h2 {
     height: 450px;
   }
 
-  .about {
-  padding: 7rem 3rem;
+    .about {
+    padding: 7rem 3rem;
+    }
+
+    .about-content {
+      grid-template-columns: minmax(0, 1.6fr) minmax(220px, 0.8fr);
+
+      gap: 5rem;
+
+      align-items: start;
+    }
+
+    .about-copy h3,
+    .about-skills h3 {
+      font-size: 1.8rem;
+    }
+
+    .about-copy p {
+      font-size: 1.2rem;
+    }
+
+    .about-skills li {
+      font-size: 1.2rem;
+    }
+
+    .about-tools {
+      font-size: 1.1rem;
+    }
+
+    .about-portrait {
+    width: 100%;
+    max-width: 275px;
+
+    margin: 0 0 3rem;
   }
-
-  .about-content {
-    grid-template-columns: minmax(0, 1.6fr) minmax(220px, 0.8fr);
-
-    gap: 5rem;
-
-    align-items: start;
-  }
-
-  .about-copy h3,
-  .about-skills h3 {
-    font-size: 1.8rem;
-  }
-
-  .about-copy p {
-    font-size: 1.2rem;
-  }
-
-  .about-skills li {
-    font-size: 1.2rem;
-  }
-
-  .about-tools {
-    font-size: 1.1rem;
-  }
-
-  .about-portrait {
-  width: 100%;
-  max-width: 275px;
-
-  margin: 0 0 3rem;
-}
 
   /* Contact */
 
@@ -1082,7 +1242,50 @@ h2 {
   .contact-copy {
     font-size: 1.25rem;
   }
-}
+
+  /* My Process - Tablet */
+
+  .process {
+    padding: 7rem 3rem;
+  }
+
+  .process-step {
+    grid-template-columns: 1fr;
+
+    gap: 2.5rem;
+
+    margin-bottom: 7rem;
+  }
+
+  .process-number {
+    font-size: 1.25rem;
+  }
+
+  .process-text h3 {
+    font-size: 2.25rem;
+  }
+
+  .process-text p,
+  .process-heading p {
+    font-size: 1.2rem;
+  }
+
+  .process-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 1.5rem;
+  }
+
+  .process-image {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+  }
+
+  }
+
+
 
 
 /* Full Desktop */
@@ -1164,27 +1367,40 @@ h2 {
 
   .motion,
   .video,
-  .graphics {
-    min-height: 40vh;
-    padding: 2rem;
+  .graphic-design {
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+
+  .glide {
+    width: 96vw;
+    max-width: 1800px;
+
+    margin-left: auto;
+    margin-right: auto;
   }
 
 
-  /* Glide */
+  /* Glide Media */
 
   .glide__slide img,
   .glide__slide video {
-    height: 550px;
+    height: 500px;
+    max-width: 100%;
   }
 
-    .about {
-    min-height: 90vh;
 
+  /* About */
+
+  .about {
+    min-height: 90vh;
     padding: 8rem 4rem;
   }
 
   .about-content {
-    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.7fr);
+    grid-template-columns:
+      minmax(0, 1.7fr)
+      minmax(260px, 0.7fr);
 
     gap: 7rem;
   }
@@ -1194,15 +1410,76 @@ h2 {
   }
 
   .about-portrait {
-  width: 100%;
-  max-width: 400px;
+    width: 100%;
+    max-width: 400px;
   }
+
+
+  /* My Process */
+
+  .process {
+    padding: 8rem 4rem;
+  }
+
+  .process-step {
+    gap: 6rem;
+    margin-bottom: 8rem;
+  }
+
+  .process-text p,
+  .process-heading p {
+    font-size: 1.25rem;
+  }
+
+  .process-number {
+    font-size: 1.35rem;
+  }
+
+  .process-text h3 {
+    font-size: 2.5rem;
+  }
+
+  .process-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .process-image {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .process-inner {
+  max-width: 1400px;
+}
+
+  .process-step {
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 4rem;
+    margin-bottom: 8rem;
+  }
+
+  .process-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .process-image {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .process-image img {
+    width: 100%;
+    height: auto;
+  }
+
 
   /* Contact */
 
   .contact {
-    min-height: 90vh;
-
     padding: 9rem 4rem;
   }
 }
