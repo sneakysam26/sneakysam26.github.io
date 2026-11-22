@@ -7,6 +7,9 @@ gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 ScrollTrigger.normalizeScroll(true);
 
+
+// Lenis Smooth Scrolling
+
 const lenis = new Lenis({
   duration: 1.2
 });
@@ -18,6 +21,7 @@ gsap.ticker.add((time) => {
 });
 
 gsap.ticker.lagSmoothing(0);
+
 
 // Intro Path
 
@@ -36,7 +40,7 @@ const introTimeline = gsap.timeline({
 });
 
 
-// Reveal the gold line
+// Reveal Intro Path
 
 introTimeline.to(
   introPath,
@@ -56,6 +60,7 @@ const motionGlide = new Glide(".motion-glide", {
   gap: 20,
   autoplay: 20000,
   animationDuration: 700,
+
   breakpoints: {
     1099: {
       perView: 2
@@ -78,6 +83,7 @@ const videoGlide = new Glide(".video-glide", {
   gap: 20,
   autoplay: 20000,
   animationDuration: 700,
+
   breakpoints: {
     1099: {
       perView: 2
@@ -91,6 +97,7 @@ const videoGlide = new Glide(".video-glide", {
 
 videoGlide.mount();
 
+
 // Graphic Design Glide
 
 const graphicGlide = new Glide(".graphic-glide", {
@@ -99,6 +106,7 @@ const graphicGlide = new Glide(".graphic-glide", {
   gap: 20,
   autoplay: 20000,
   animationDuration: 700,
+
   breakpoints: {
     1099: {
       perView: 2
@@ -112,15 +120,52 @@ const graphicGlide = new Glide(".graphic-glide", {
 
 graphicGlide.mount();
 
-// Fullscreen Image Viewer
+
+// 3D & Lighting Glide
+
+const lightingGlide = new Glide(".lighting-glide", {
+  type: "carousel",
+  perView: 3,
+  gap: 20,
+  autoplay: 20000,
+  animationDuration: 700,
+
+  breakpoints: {
+    1099: {
+      perView: 2
+    },
+
+    767: {
+      perView: 1
+    }
+  }
+});
+
+lightingGlide.mount();
+
+
+// Fullscreen Image Galleries
 
 const graphicImages = Array.from(
-  document.querySelectorAll(".graphic-glide .fullscreen-image")
+  document.querySelectorAll(
+    ".graphic-glide .fullscreen-image"
+  )
 );
 
 const processImages = Array.from(
-  document.querySelectorAll(".process .fullscreen-image")
+  document.querySelectorAll(
+    ".process .fullscreen-image"
+  )
 );
+
+const lightingImages = Array.from(
+  document.querySelectorAll(
+    ".lighting-glide .fullscreen-image"
+  )
+);
+
+
+// Fullscreen Viewer Elements
 
 const fullscreenViewer =
   document.querySelector(".image-fullscreen-viewer");
@@ -138,9 +183,13 @@ const fullscreenClose =
   document.querySelector(".fullscreen-close");
 
 
+// Fullscreen Viewer State
+
 let activeFullscreenImages = [];
 let fullscreenImageIndex = 0;
 
+
+// Show Selected Fullscreen Image
 
 function showFullscreenImage(index) {
 
@@ -155,6 +204,8 @@ function showFullscreenImage(index) {
   fullscreenViewerImage.alt = image.alt;
 }
 
+
+// Create Independent Fullscreen Gallery
 
 function setupFullscreenGallery(images) {
 
@@ -177,19 +228,28 @@ function setupFullscreenGallery(images) {
 }
 
 
+// Register Fullscreen Galleries
+
 setupFullscreenGallery(graphicImages);
 setupFullscreenGallery(processImages);
+setupFullscreenGallery(lightingImages);
 
+
+// Previous Fullscreen Image
 
 fullscreenPrevious.addEventListener("click", () => {
   showFullscreenImage(fullscreenImageIndex - 1);
 });
 
 
+// Next Fullscreen Image
+
 fullscreenNext.addEventListener("click", () => {
   showFullscreenImage(fullscreenImageIndex + 1);
 });
 
+
+// Close Fullscreen Viewer
 
 fullscreenClose.addEventListener("click", () => {
 
@@ -199,44 +259,30 @@ fullscreenClose.addEventListener("click", () => {
 
 });
 
-// Pause Motion Design Glide while a video is playing
 
-document
-  .querySelectorAll(".motion-glide .project-video")
-  .forEach((video) => {
+// All Portfolio Videos
 
-    video.addEventListener("play", () => {
-      motionGlide.pause();
-    });
+const portfolioVideos =
+  document.querySelectorAll(".project-video");
 
-    video.addEventListener("pause", () => {
-      motionGlide.play();
-    });
-
-    video.addEventListener("ended", () => {
-      motionGlide.play();
-    });
-
-  });
-
-
-// Pause Video Editing Glide while a video is playing
-
-// All portfolio videos
-const portfolioVideos = document.querySelectorAll(".project-video");
 
 portfolioVideos.forEach((video) => {
 
   video.addEventListener("play", () => {
 
     // Pause every other video
+
     portfolioVideos.forEach((otherVideo) => {
+
       if (otherVideo !== video) {
         otherVideo.pause();
       }
+
     });
 
-    // Pause the correct Glide carousel
+
+    // Pause the correct Glide while video plays
+
     if (video.closest(".motion-glide")) {
       motionGlide.pause();
     }
@@ -244,34 +290,70 @@ portfolioVideos.forEach((video) => {
     if (video.closest(".video-glide")) {
       videoGlide.pause();
     }
+
+  });
+
+
+  video.addEventListener("pause", () => {
+
+    if (video.closest(".motion-glide")) {
+      motionGlide.play();
+    }
+
+    if (video.closest(".video-glide")) {
+      videoGlide.play();
+    }
+
+  });
+
+
+  video.addEventListener("ended", () => {
+
+    if (video.closest(".motion-glide")) {
+      motionGlide.play();
+    }
+
+    if (video.closest(".video-glide")) {
+      videoGlide.play();
+    }
+
   });
 
 });
+
 
 // AOS Scroll Animations
 
 AOS.init({
   duration: 800,
-
   once: false,
-
   mirror: true,
-
   offset: 300
 });
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (e) => {
-    e.preventDefault();
 
-    const target = document.querySelector(
-      anchor.getAttribute("href")
-    );
+// Smooth Navigation Links
 
-    if (target) {
-      lenis.scrollTo(target, {
-        duration: 2
-      });
-    }
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach((anchor) => {
+
+    anchor.addEventListener("click", (e) => {
+
+      e.preventDefault();
+
+      const target = document.querySelector(
+        anchor.getAttribute("href")
+      );
+
+      if (target) {
+
+        lenis.scrollTo(target, {
+          duration: 2
+        });
+
+      }
+
+    });
+
   });
-});

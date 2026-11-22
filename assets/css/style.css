@@ -399,7 +399,8 @@ h2 {
 
 .motion,
 .video,
-.graphics {
+.graphics,
+.lighting {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1178,7 +1179,8 @@ h2 {
 
   .motion,
   .video,
-  .graphics {
+  .graphics,
+  .lighting {
     min-height: 50vh;
     padding: 2.5rem;
   }
@@ -1367,7 +1369,8 @@ h2 {
 
   .motion,
   .video,
-  .graphic-design {
+  .graphics,
+  .lighting {
     width: 100%;
     padding: 3rem 2rem;
   }
