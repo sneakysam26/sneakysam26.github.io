@@ -156,7 +156,6 @@ h2 {
   display: block;
 }
 
-
 /* Hero Navigation */
 
 .hero-nav {
@@ -167,7 +166,6 @@ h2 {
 
   gap: 12px;
 }
-
 
 /* All Navigation Links */
 
@@ -274,11 +272,140 @@ h2 {
     scale(1.2);
 }
 
+.work h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--text-light);
+  text-shadow: var(--text-shadow);
+}
+
+.work-inner {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 4rem;
+
+  text-align: center;
+}
+
+.work-inner p {
+  max-width: 720px;
+
+  margin: 0 auto 2.5rem;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  color: var(--text-light);
+
+  text-shadow: var(--text-shadow);
+}
+
+
+.work-nav {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* All Work Navigation Links */
+
+.work-nav a {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  padding: 8px;
+  margin-left: 0;
+  text-decoration: none;
+  color: var(--text-light);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.65),
+    0 0 8px rgba(0, 0, 0, 0.35);
+
+  transition:
+    color 0.3s ease,
+    transform 0.25s ease,
+    text-shadow 0.3s ease;
+}
+
+
+/* Sage Radial Glow */
+
+.work-nav a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 200px;
+  transform:
+    translate(-50%, -50%)
+    scale(0.7);
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 255, 235, 1) 0%,
+    rgba(205, 225, 185, 0.9) 15%,
+    rgba(156, 175, 136, 0.55) 35%,
+    rgba(156, 175, 136, 0.18) 55%,
+    rgba(156, 175, 136, 0.05) 68%,
+    transparent 78%
+  );
+
+  filter: blur(8px);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+/* Hover */
+
+.work-nav a:hover {
+  color: #ffffff;
+  text-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.7),
+    0 0 6px rgba(245, 255, 235, 0.7);
+  transform: translateY(-3px);
+}
+
+.work-nav a:hover::before {
+  opacity: 1;
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+/* Click */
+
+.work-nav a:active {
+  transform:
+    translateY(1px)
+    scale(0.96);
+}
+
+.work-nav a:active::before {
+  opacity: 1;
+  transform:
+    translate(-50%, -50%)
+    scale(1.2);
+}
+
 /* Intro Sequence */
 
 .intro-sequence {
   position: relative;
-
   overflow: visible;
 }
 
@@ -926,7 +1053,6 @@ h2 {
 
 /* My Process */
 
-/* My Process */
 
 .process {
   padding: 5rem 2rem;
@@ -1312,6 +1438,10 @@ h2 {
   .hero-nav a {
     font-size: 30pt;
     margin-left: 40px;
+  }
+
+  .work-inner p {
+    font-size: 1.5rem;
   }
 
 
